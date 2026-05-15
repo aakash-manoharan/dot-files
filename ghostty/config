@@ -1,0 +1,19 @@
+theme = tokyonight-night.conf
+custom-shader = ./shaders/bloom.glsl
+custom-shader = ./shaders/cursor_smear_original.glsl
+
+font-size = 14
+# font-feature = -liga,-calt
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = false
+
+background-opacity = 0.75
+
+confirm-close-surface = false
+
+window-inherit-working-directory = false
+working-directory = /home/aakash
+
+window-padding-x = 4
+window-padding-y = 2
