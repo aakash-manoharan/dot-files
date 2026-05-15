@@ -1,0 +1,52 @@
+@define-color foreground #cdd6f4;
+@define-color background #181824;
+@define-color urgent #f7768e;
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    all: unset;
+    font-family: "JetBrainsMono Nerd Mono", "Noto Sans CJK JP", "Noto Sans CJK KR";
+    font-size: 14px;
+    /* color: @foreground; */
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(18, 18, 24, 0.75);
+}
+
+.modules-left {
+    margin-left: 8px;
+}
+
+.modules-right {
+    margin-right: 8px;
+}
+
+#workspaces button {
+    all: initial;
+    padding: 0 6px;
+    margin: 0 1.5px;
+    min-width: 9px;
+}
+
+#workspaces button.empty {
+    opacity: 0.5;
+}
+
+#workspaces button.urgent {
+    color: @urgent;
+}
+
+#pulseaudio,
+#network,
+#temperature,
+#backlight,
+#battery {
+    padding-left: 4px;
+    padding-right: 4px;
+    min-width: 12px;
+    margin: 0 5px;
+}
