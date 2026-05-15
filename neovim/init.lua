@@ -14,8 +14,6 @@ vim.g.have_nerd_font = true
 
 -- Make line numbers default
 vim.o.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
 vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
@@ -28,9 +26,9 @@ vim.o.showmode = false
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.schedule(function()
-	vim.o.clipboard = "unnamedplus"
-end)
+-- vim.schedule(function()
+-- 	vim.o.clipboard = "unnamedplus"
+-- end)
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -129,7 +127,7 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 --
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- TIP: Disable arrow keys in normal mode
 vim.keymap.set("n", "<left>", "<nop>")
@@ -484,6 +482,8 @@ require("lazy").setup({
 		end,
 	},
 
+	{ "mfussenegger/nvim-jdtls" },
+
 	-- LSP Plugins
 	{
 		-- Main LSP Configuration
@@ -610,10 +610,12 @@ require("lazy").setup({
 			local servers = {
 				-- clangd = {},
 				-- gopls = {},
-				pyright = {},
 				["css-lsp"] = {},
+				pyright = {},
 				stylua = {},
 				["lua-language-server"] = {},
+				["typescript-language-server"] = {},
+				clangd = {},
 				-- rust_analyzer = {},
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -644,6 +646,8 @@ require("lazy").setup({
 				vim.lsp.config(name, server)
 				vim.lsp.enable(name)
 			end
+
+			vim.lsp.enable("ts_ls")
 
 			-- Special Lua Config, as recommended by neovim help docs
 			vim.lsp.config("lua_ls", {
@@ -841,6 +845,10 @@ require("lazy").setup({
 				highlight SignColumn guibg=NONE ctermbg=NONE
 				highlight EndOfBuffer guibg=NONE ctermbg=NONE
 			]])
+
+			vim.api.nvim_set_hl(0, "LspReferenceText", { bg = "NONE" })
+			vim.api.nvim_set_hl(0, "LspReferenceRead", { bg = "NONE" })
+			vim.api.nvim_set_hl(0, "LspReferenceWrite", { bg = "NONE" })
 		end,
 	},
 
